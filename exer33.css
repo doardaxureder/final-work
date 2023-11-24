@@ -1,0 +1,135 @@
+
+@font-face {
+    font-family: nataltitulo;
+    src: url(fontes/For\ Christmas.ttf);
+}
+@font-face {
+    font-family: NATAL;
+    src: url(fontes/Miss\ Christmas.otf);
+}
+
+#papainoel{
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+}
+.container{
+    max-width: 800px;
+  margin: 20px auto;
+  background-color: rgb(195, 7, 7);
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+p{
+    background-color: rgb(24, 65, 4);
+    border-radius: 4px;
+    font-family: NATAL;
+    font-size: 27px;
+}
+
+#aa{
+    font-family: nataltitulo;
+    font-size: 45px;
+}
+
+#select{
+    font-family: NATAL;
+    font-size: 20px;
+    text-align: center;
+    background-color: #04470e;
+    
+}
+#button{
+    color:rgb(0, 0, 0);
+    font-family: NATAL;
+    font-size:25px;
+    margin-left: 10px;
+    text-align: center;
+    background-color:#325d0c;
+    position:relative;
+    padding:10px 20px;
+    text-shadow: 0px 1px 0px #000;
+    -webkit-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #04470e;
+    -moz-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #0d4916;
+    box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #04470e;
+    border-radius: 5px;
+  }
+  #button:active{
+    top:10px;
+    background-color:#04470e; 
+    -webkit-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #0c5817;
+    -moz-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #176b23;
+    box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #209131;
+  }
+  #button:after{
+    content:"";
+    height:100%;
+    width:100%;
+    padding:4px;
+    position: absolute;
+    bottom:-15px;
+    left:-4px;
+    z-index:-1;
+    background-color:#04470e;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  @media only screen and (max-width: 600px) {
+
+
+    #aa{
+        font-family: nataltitulo;
+        font-size: 30px;
+    }
+
+    
+#select{
+    font-family: NATAL;
+    font-size: 15px;
+    text-align: center;
+    background-color: #04470e;
+    
+}
+#button{
+    color:rgb(0, 0, 0);
+    font-family: NATAL;
+    font-size:15px;
+    margin-left: 10px;
+    text-align: center;
+    background-color:#325d0c;
+    position:relative;
+    padding:10px 20px;
+    text-shadow: 0px 1px 0px #000;
+    -webkit-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #04470e;
+    -moz-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #0d4916;
+    box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #04470e;
+    border-radius: 5px;
+  }
+  #button:active{
+    top:10px;
+    background-color:#04470e; 
+    -webkit-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #0c5817;
+    -moz-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #176b23;
+    box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #209131;
+  }
+  #button:after{
+    content:"";
+    height:100%;
+    width:100%;
+    padding:4px;
+    position: absolute;
+    bottom:-15px;
+    left:-4px;
+    z-index:-1;
+    background-color:#04470e;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  }

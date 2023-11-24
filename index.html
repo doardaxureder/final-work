@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Trabalho final!!</title>
+</head>
+<body>
+    <div id="tudinho">
+        <div id="container">
+            <label for="botaopais"> < Escolha um país: > </label>
+            <select id="botaopais" onchange="pais()">
+                <option value="" disabled selected>Selecione um país</option>
+            </select>
+        </div>
+        <div id="mostra"></div>
+        <a href="file:///F:/Programa%C3%A7%C3%A3o/finalwork/aapi.html"><img id="pato" src="https://usagif.com/wp-content/uploads/2022/4hv9xm/dancing-duck-acegifcom-70.gif"></a>
+
+    </div>
+
+    <script>
+        async function buscaJson() {
+            const painel = document.querySelector("#botaopais");
+            const url = "paises.json";
+
+            try {
+                let resposta = await fetch(url);
+                let dadospaises = await resposta.json();
+
+                for (const pais in dadospaises) {
+                    let option = document.createElement('option');
+                    option.value = pais;  // Set the value to the country name
+                    option.text = dadospaises[pais].nome_pais;  // Set the text to the country name
+                    option.setAttribute('info', JSON.stringify(dadospaises[pais]));
+                    painel.add(option);
+                }
+            } catch (error) {
+                console.error("Erro", error);
+            }   
+        }
+
+        function pais() {
+            const botaopais = document.getElementById('botaopais');
+            const paisselecionado = botaopais.value;
+            const dadospaises = JSON.parse(botaopais.options[botaopais.selectedIndex].getAttribute('info'));
+            const painel = document.querySelector('#mostra');
+
+            let texto = `<h1> < Dados de ${dadospaises.nome_pais}  > </h1>`;
+            texto += `<p>Gentílico: ${dadospaises.gentilico}</p>`;
+            texto += `<p>Sigla: ${dadospaises.sigla}</p>`;
+            texto += `<p>Nome Internacional: ${dadospaises.nome_pais_int}</p>`;
+
+            painel.innerHTML = texto;
+        }
+
+        async function inicializar() {
+            await buscaJson();
+        }
+
+        inicializar();
+    </script>
+</body>
+</html>

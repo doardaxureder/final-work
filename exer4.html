@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="exer44.css">
+
+    <style>
+        .loading {
+            display: none;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .result2 {
+            margin-top: 20px;
+        }
+
+        .result3 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    
+    <div class="container">
+        <h1>SEJA BEM-VINDO AO MUNDO STAR WARS <br>(AS TRES ULTIMAS QUESTOES NAO SAO DE SW PQ NA API JA TINHA ACABADO)</h1>
+    <button id="button" onclick="PromiseAny()">Botão 1</button>
+
+    <div id="loading" class="loading"><img id="papainoel" src="https://usagif.com/wp-content/uploads/loading-58.gif"></div>
+    <div id="result-container" class="result"></div>
+
+    <button id="button" onclick="PromiseRace()">Botão 2</button>
+    
+    <div id="result-container2" class="result2"></div>
+
+    <button id="button" onclick="fetchWithPromiseAll()">Botão 3</button>
+    
+    <div id="result-container3" class="result3"></div>
+
+    <a href="file:///F:/Programa%C3%A7%C3%A3o/finalwork/index.html"><img id="sw" src="https://i.pinimg.com/originals/c7/ae/1b/c7ae1b4c1932bc97efb21a834e2b5b66.gif"></a>
+    <h3>Caso no primeiro botao apareça o nome do personagem, por favor aperte novamente para aparecer o nome do planeta!</h3>
+
+    </div>
+    <script>
+        const api1 = 'https://swapi.dev/api/planets/1/';
+        const api2 = 'https://swapi.dev/api/people/1/';
+        const api3 = 'https://swapi.dev/api/films/1/';
+
+        const fetchData = async (url) => {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Erro ao acessar ${url}`);
+            }
+            return response.json();
+        };
+
+        const showLoading = () => {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('result-container').style.display = 'none';
+        };
+
+        const hideLoading = () => {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('result-container').style.display = 'block';
+        };
+        
+        const displayResult = (result) => {
+            const resultContainer = document.getElementById('result-container');
+            if (result.name) {
+                const { name, climate, diameter, gravity, orbital_period, population, rotation_period, surface_water, terrain, url } = result;
+                resultContainer.innerHTML = `
+                    <p>Nome: ${name}</p>
+                    <p>Climate: ${climate}</p>
+                    <p>Diameter: ${diameter}</p>
+                    <p>Gravity: ${gravity}</p>
+                    <p>Orbital Period: ${orbital_period}</p>
+                    <p>Population: ${population}</p>
+                    <p>Rotation Period: ${rotation_period}</p>
+                    <p>Surface Water: ${surface_water}</p>
+                    <p>Terrain: ${terrain}</p>
+                `;
+            } else if (result.birth_year) {
+                const { birth_year, eye_color, films, gender, hair_color } = result;
+                resultContainer.innerHTML = `
+                    <p>Aniversario: ${birth_year}</p>
+                    <p>Cor do olho: ${eye_color}</p>
+                    <p>Filmes: ${films.join(', ')}</p>
+                    <p>Genero: ${gender}</p>
+                    <p>Cor do cabelo: ${hair_color}</p>
+                `;
+            } else if (result.created) {
+                const { created, director, edited} = result;
+                resultContainer.innerHTML = `
+                    <p>Criado em: ${created}</p>
+                    <p>Diretor: ${director}</p>
+                    <p>Editado em: ${edited.join(', ')}</p>
+                `;
+            } else {
+                resultContainer.innerHTML = `<p>Resultado vazio</p>`;
+            }
+            hideLoading();
+        };
+
+        const PromiseAny = async () => {
+            try {
+                showLoading();
+                const result = await Promise.race([fetchData(api1), fetchData(api2), fetchData(api3)]);
+                displayResult(result);
+            } catch (error) {
+                console.error(error.message);
+                displayResult({ error: error.message });
+            }
+        };
+
+        // COMEÇA O PROMISERACE
+
+        const api11 = 'https://swapi.dev/api/species/3/';
+        const api22 = 'https://swapi.dev/api/starships/9/';
+        const api33 = 'https://swapi.dev/api/vehicles/4/';
+
+        const fetchData2 = async (url) => {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Erro ao acessar ${url}`);
+            }
+            return response.json();
+        };
+
+        const showLoading2 = () => {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('result-container2').style.display = 'none';
+        };
+
+        const hideLoading2 = () => {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('result-container2').style.display = 'block';
+        };
+        
+        const displayResult2 = (result2) => {
+            const resultContainer2 = document.getElementById('result-container2');
+            if (result2.average_height) {
+                const { average_height, average_lifespan, classification, created, designation } = result2;
+                resultContainer2.innerHTML = `
+                    <p>Altura: ${average_height}</p>
+                    <p>Vida útil: ${average_lifespan}</p>
+                    <p>Classificação: ${classification}</p>
+                    <p>Criado em: ${created}</p>
+                    <p>Designação: ${designation}</p>
+                `;
+            } else if (result2.MGLT) {
+                const { MGLT, cargo_capacity, length } = result2;
+                resultContainer2.innerHTML = `
+                    <p>MGLT: ${MGLT}</p>
+                    <p>capacidade de cargo: ${cargo_capacity}</p>
+                    <p>length: ${length}</p>
+                `;
+            } else if (result2.crew) {
+                const { crew, passengers, model } = result2;
+                resultContainer2.innerHTML = `
+                    <p>Crew: ${crew}</p>
+                    <p>Passageiros: ${passengers}</p>
+                    <p>Modelo ${model}</p>
+                `;
+            } else {
+                resultContainer2.innerHTML = `<p>Resultado vazio</p>`;
+            }
+            hideLoading2();
+        };
+
+        const PromiseRace = async () => {
+            try {
+                showLoading2();
+                const result2 = await Promise.race([fetchData2(api11), fetchData2(api22), fetchData2(api33)]);
+                displayResult2(result2);
+            } catch (error) {
+                console.error(error.message);
+                displayResult2({ error: error.message });
+            }
+        };
+
+        async function fetchWithPromiseAll() {
+            const resultContainer3 = document.getElementById('result-container3');
+
+            // Limpar o conteúdo anterior
+            resultContainer3.innerHTML = '';
+
+            // Definir os URLs das APIs a serem consultadas
+            const api111 = 'https://parallelum.com.br/fipe/api/v1/carros/marcas';
+            const api222 = 'https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos';
+            const api333 = 'https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/anos';
+
+            try {
+                // Utilizando Promise.all para obter os resultados de todas as promessas
+                const results3 = await Promise.all([
+                    fetch(api111).then(response => response.json()),
+                    fetch(api222).then(response => response.json()),
+                    fetch(api333).then(response => response.json())
+                ]);
+
+                // Exibir os resultados no container
+                results3.forEach(result3 => {
+                    if (result3[0] && result3[0].codigo) {
+                        for (let i = 0; i < Math.min(result3.length, 10); i++) {
+                            resultContainer3.innerHTML += `<p>Código: ${result3[i].codigo}, Nome: ${result3[i].nome}</p>`;
+                        }
+                    }
+                });
+            } catch (error) {
+                // Tratar erros, exibindo mensagens no container
+                resultContainer3.textContent = `Erro ao acessar APIs (Promise.all): ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>

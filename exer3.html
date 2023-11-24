@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="exer33.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <label for="select" id="aa"> Escolha o metadado da fazendinha de sua preferencia HOHOHO:</label>
+        <select id="select"> 
+            <option value="PPM_OVOS">OVOS</option>
+            <option value="PPM_QLEITE">LEITE DA VAQUINNHA</option>
+            <option value="PPM_QMEL">MELZINHO DA ABELINHA</option>
+        </select>
+        <button id="button" onclick="consultardados()">Confirmar</button>
+        <div id="dadoscontainer"></div>
+        <a href="file:///F:/Programa%C3%A7%C3%A3o/finalwork/exer4.html"><img id="papainoel" src="https://silviaenina.files.wordpress.com/2015/12/noel_dancando_silviaenina.gif?w=300"></a>
+
+    </div>
+    <script>
+        function consultardados()
+        {
+            let select = document.getElementById("select"); //vai pegar meu select
+            let selectopcao = select.options[select.selectedIndex].value;
+            let linkzinho = "http://www.ipeadata.gov.br/api/odata4/Metadados('" + selectopcao + "')"; // vai ir la no meu metadado, ver a opção que eu escolhi e vapo
+            let dadoscontainer = document.getElementById("dadoscontainer"); 
+            dadoscontainer.innerHTML = "" //limpa o coisinha de antes, mesma esquema do trabalho de volei
+
+            //agora vai começar o fecth, ele vai selecionar o nome do que eu escolhi, no caso ovos, leite e mel, e em seguida dar a descrição de cada um
+
+            fetch(linkzinho)
+                .then(response => response.json()) // Esta parte está convertendo a resposta da requisição para JSON. 
+                .then(data => {
+                    let nome = data.value[0].SERNOME; //vai criar aquela coisinha que eu esqueci o nome, tipo isso aqui: [1,2,3,4...], só que ai com o nome que ele vai pegar la naquele arquivo feio e confuso
+                    let coment = data.value[0].SERCOMENTARIO;
+                    dadoscontainer.innerHTML += "<p>Nome: " + nome + "</p>";
+                    dadoscontainer.innerHTML += "<p>Descrição: " + coment + "</p>";
+                    return fetch(linkzinho + "/Valores/"); //vai no api e ve os dados
+                })
+                
+                    .catch(error => console.error('Erro:', error));
+        }
+
+        
+
+    </script>
+    
+</body>
+</html>

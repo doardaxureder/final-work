@@ -1,0 +1,83 @@
+@font-face {
+  font-family: starwars;
+  src: url(fontes/Death\ Star.otf);
+}
+#sw{
+    width: 170px;
+    height: 150px;
+    margin-top: 20px;
+  }
+
+  p{
+    font-family: starwars;
+  }
+  
+.container{
+    max-width: 800px;
+  margin: 20px auto;
+  background-color: 	#8e3312;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+h1{
+  font-family: starwars;
+  text-align: center;
+}
+
+h3{
+  font-family: starwars;
+  text-align: center;
+}
+#button {
+  font-family: starwars;
+
+  display: inline-block;
+  padding: .75rem 1.25rem;
+  border-radius: 10rem;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: .15rem;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background-color: rgb(242, 144, 73);
+
+}
+
+#button::after{
+  z-index: -2;
+  border-radius: 10rem;
+  background-color: rgb(131, 55, 0);
+  width: auto;
+  height: auto;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  content: '';
+}
+ #button::before{
+  z-index: -1;
+  border-radius: 10rem;
+  transition: all .3s;
+  background-color: rgb(160, 76, 16);
+  height: 100%;
+  width: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  content: '';
+ }
+
+  #button:hover {
+    color: rgb(0, 0, 0);
+    &:before {
+      width: 100%;
+    }
+  }
+
+

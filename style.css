@@ -1,0 +1,121 @@
+@font-face {
+    font-family:'titulo';
+    src:url("fontes/Cheese\ Burger.otf");
+}
+
+@font-face {
+    font-family:'palavras';
+    src:url("fontes/CHICKEN\ Pie.otf");
+}
+
+#pato{
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+#container{
+    text-align: center;
+    
+}
+body{
+    background-color: rgb(162, 160, 160);
+}
+.p{
+    font-size: 2vw;
+
+}
+
+label{
+    font-size: 4vw;
+    font-family: titulo;
+    margin-bottom: 4vw;
+    
+
+}
+
+#botaopais{
+    font-size: 2vw;
+    margin-top: auto;
+    background-color: rgb(195, 255, 255);
+    border-radius: 1vw;
+
+}
+
+#botaopais:hover{
+    background-color: rgb(110, 166, 166);
+
+}
+
+#mostra{
+    font-size: 2vw;
+    text-align: center;
+    font-family: palavras;
+    
+
+
+}
+h1{
+    font-family: titulo;
+    font-size: 3vw;
+    
+
+}
+#tudinho{
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: rgba(26, 231, 159, 0.745);
+    padding: 20px;
+    box-shadow: 0 10 200px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+
+
+}
+
+#aa{
+    
+    text-align: center;
+}
+
+
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 600px) {
+    label{
+    font-size: 10vw;
+    font-family: titulo;
+    }
+
+    
+#botaopais{
+    font-size: 4vw;
+    margin-top: 5vw;
+    background-color: rgb(195, 255, 255);
+    border-radius: 3vw;
+
+}
+
+h1{
+    font-family: titulo;
+    font-size: 6vw;
+
+}
+
+.p{
+    font-size: 40vw;
+}
+
+
+#mostra{
+    font-size: 5vw;
+    text-align: center;
+    font-family: palavras;
+    
+
+
+}
+
+
+  }
+  

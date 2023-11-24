@@ -1,0 +1,122 @@
+
+@font-face {
+    font-family:'titulo';
+    src:url("fontes/Fiendish.otf");
+}
+
+
+@font-face {
+  font-family:'aa';
+  src:url("fontes/Friday13SH.otf");
+}
+/* Default styles for all screen sizes */
+
+#terror{
+  width: 100px;
+  height: 100px;
+  margin-top: 20px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20200914/pngtree-splattered-blood-drops-halloween-blood-background-image_398578.jpg);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: titulo;
+  color: rgb(134, 35, 35);
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #252d1fbe;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #2f2f2f;
+  border-radius: 5px;
+  font-family: aa;
+  color: rgb(255, 255, 255);
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #3b463c;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #181d18;
+}
+
+#resultadocep{
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+#resultadoestado{
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+#resultadonmc{
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 600px) {
+  /* Adjust styles for screens smaller than 600px */
+  .container {
+      margin-left: 3vw;
+      margin-right: 3vw;
+  }
+
+  li {
+      margin-right: 5vw;
+  }
+}
